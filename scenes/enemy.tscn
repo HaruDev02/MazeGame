@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb1ra0hp3cj63"]
+
+[ext_resource type="Script" uid="uid://criof5g65r1jl" path="res://scenes/enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://wmekdouxl3p6" path="res://assets/art/player_sprite.png" id="2_qi2p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(8, 8)
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+texture = ExtResource("2_qi2p4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iifgy")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="RaycastUp" type="RayCast2D" parent="Raycasts"]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+target_position = Vector2(0, -8)
+hit_from_inside = true
+
+[node name="RaycastDown" type="RayCast2D" parent="Raycasts"]
+unique_name_in_owner = true
+position = Vector2(0, 8)
+target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[node name="RaycastLeft" type="RayCast2D" parent="Raycasts"]
+unique_name_in_owner = true
+position = Vector2(-8, 0)
+target_position = Vector2(-8, 0)
+hit_from_inside = true
+
+[node name="RaycastRight" type="RayCast2D" parent="Raycasts"]
+unique_name_in_owner = true
+position = Vector2(8, 0)
+target_position = Vector2(8, 0)
+hit_from_inside = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

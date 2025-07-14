@@ -1,0 +1,71 @@
+[gd_scene load_steps=16 format=4 uid="uid://cnl33cit3papx"]
+
+[ext_resource type="Texture2D" uid="uid://buj7ed4f6hf27" path="res://assets/art/Sprite-0001.png" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://dv1ulp3f4ys0k" path="res://scenes/game.gd" id="1_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://ddwuwod13o3y3" path="res://assets/art/invisible_wall.png" id="2_7jktm"]
+[ext_resource type="Script" uid="uid://ogf2sipq4gfl" path="res://scenes/invisible_walls.gd" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://huq286xe05w7" path="res://scenes/player.tscn" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://cnj71ea8ydhiw" path="res://scenes/exit.tscn" id="4_eow3j"]
+[ext_resource type="PackedScene" uid="uid://bgnmxti6htoyl" path="res://scenes/collectible.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://cb1ra0hp3cj63" path="res://scenes/enemy.tscn" id="6_ryrav"]
+[ext_resource type="PackedScene" uid="uid://dhi14v0urbtbe" path="res://scenes/pause_screen.tscn" id="9_vef74"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jktm"]
+texture = ExtResource("1_e2o6t")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ryrav"]
+sources/0 = SubResource("TileSetAtlasSource_7jktm")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
+texture = ExtResource("2_7jktm")
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_7jktm"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_fc0e3")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_j5wjh"]
+scenes/1/scene = ExtResource("4_eow3j")
+
+[sub_resource type="TileSet" id="TileSet_vef74"]
+sources/0 = SubResource("TileSetScenesCollectionSource_j5wjh")
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_j5wjh")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+self_modulate = Color(0.601223, 0.601223, 0.601223, 1)
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ryrav")
+
+[node name="InvisibleWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD8/wEAAAABAAEAAAD8/wAAAAABAAEAAAD8////AAABAAEAAAD8//7/AAABAAEAAAD8//3/AAABAAEAAAD8//z/AAABAAEAAAD9//z/AAABAAEAAAD+//z/AAABAAEAAAD///z/AAABAAEAAAAAAPz/AAABAAEAAAABAPz/AAABAAEAAAACAPz/AAABAAEAAAACAP3/AAABAAEAAAACAP7/AAABAAEAAAACAP//AAABAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAEAAAACAAIAAAABAAEAAAABAAIAAAABAAEAAAAAAAIAAAABAAEAAAD//wIAAAABAAEAAAD+/wIAAAABAAEAAAD9/wIAAAABAAEAAAD8/wIAAAABAAEAAAD/////AAABAAEAAAA=")
+tile_set = SubResource("TileSet_7jktm")
+script = ExtResource("2_fc0e3")
+
+[node name="ExitLayer" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_vef74")
+
+[node name="Player" parent="." instance=ExtResource("2_feb5d")]
+position = Vector2(-40, -40)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Collectible" parent="." instance=ExtResource("5_7jktm")]
+position = Vector2(-24, 8)
+
+[node name="Collectible2" parent="." instance=ExtResource("5_7jktm")]
+position = Vector2(24, -40)
+
+[node name="Enemy" parent="." instance=ExtResource("6_ryrav")]
+position = Vector2(8.33334, 24)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("9_vef74")]
+visible = false
