@@ -1,6 +1,10 @@
 extends Node2D
 
+@onready var player: Area2D = %Player
+@onready var enemy: Area2D = %Enemy
+@onready var start_timer: Timer = %StartTimer
 @onready var _exit_layer: TileMapLayer = %ExitLayer
+
 var collectibles_count := 0
 
 func _ready() -> void:
@@ -9,7 +13,7 @@ func _ready() -> void:
 	collectibles_count = collectibles.size()
 	for collectible in collectibles:
 		collectible.connect("collected", collectible_collected)
-
+	
 func collectible_collected() -> void:
 	collectibles_count -= 1
 	if collectibles_count == 0:

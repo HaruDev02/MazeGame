@@ -52,6 +52,7 @@ tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_vef74")
 
 [node name="Player" parent="." instance=ExtResource("2_feb5d")]
+unique_name_in_owner = true
 position = Vector2(-40, -40)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -63,9 +64,14 @@ position = Vector2(-24, 8)
 position = Vector2(24, -40)
 
 [node name="Enemy" parent="." instance=ExtResource("6_ryrav")]
+unique_name_in_owner = true
 position = Vector2(8.33334, 24)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("9_vef74")]
 visible = false
+
+[node name="StartTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

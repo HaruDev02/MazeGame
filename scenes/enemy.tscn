@@ -49,4 +49,11 @@ position = Vector2(8, 0)
 target_position = Vector2(8, 0)
 hit_from_inside = true
 
+[node name="RayCastToPlayer" type="RayCast2D" parent="Raycasts"]
+unique_name_in_owner = true
+target_position = Vector2(0, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

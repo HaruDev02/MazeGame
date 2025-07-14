@@ -11,38 +11,34 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbxmk"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-bg_color = Color(0, 0, 0, 0.509804)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx2t1"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 100.0
-expand_margin_right = 100.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmdkk"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-bg_color = Color(0, 0, 0.239216, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jc4x"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.331019, 0.331019, 0.331019, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 100.0
-expand_margin_right = 100.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2krdf"]
 content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-bg_color = Color(0, 0, 0, 0.568627)
+bg_color = Color(0, 0, 0, 0.364706)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -51,8 +47,8 @@ corner_radius_bottom_left = 10
 [resource]
 Button/font_sizes/font_size = 24
 Button/styles/focus = SubResource("StyleBoxFlat_wyb85")
-Button/styles/hover = SubResource("StyleBoxFlat_bbxmk")
+Button/styles/hover = SubResource("StyleBoxFlat_hx2t1")
 Button/styles/normal = SubResource("StyleBoxFlat_wyb85")
-Button/styles/pressed = SubResource("StyleBoxFlat_gmdkk")
+Button/styles/pressed = SubResource("StyleBoxFlat_3jc4x")
 Label/font_sizes/font_size = 24
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_2krdf")
