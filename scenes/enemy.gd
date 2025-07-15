@@ -20,7 +20,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	_raycast_to_player.target_position = get_tree().get_nodes_in_group("Player")[0].global_position
+	_raycast_to_player.target_position = get_tree().get_nodes_in_group("Player")[0].global_position - global_position
 	print(_raycast_to_player.get_collider())
 	pass
 	
