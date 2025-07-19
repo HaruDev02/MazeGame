@@ -19,6 +19,7 @@ config/icon="res://assets/art/icon.svg"
 
 window/size/viewport_width=426
 window/size/viewport_height=240
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
@@ -27,6 +28,7 @@ window/stretch/scale_mode="integer"
 
 Collectibles=""
 Player=""
+Enemy=""
 
 [input]
 

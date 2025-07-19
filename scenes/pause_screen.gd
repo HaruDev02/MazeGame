@@ -8,7 +8,7 @@ extends Control
 
 @export_range(0, 1.0) var menu_opened_amount := 0.0:
 	set = set_menu_opened_amount
-@export_range(0.1, 10.0, 0.01, "or_greater") var animation_duration := 2.3
+@export_range(0.1, 10.0, 0.01, "or_greater") var animation_duration := 1.0
 
 var _tween: Tween
 var _is_currently_opening := false
@@ -32,6 +32,9 @@ func set_menu_opened_amount(amount: float) -> void:
 	_blur_color_rect.material.set_shader_parameter("saturation", lerp(1.0, 0.3, amount))
 	_blur_color_rect.material.set_shader_parameter("tint_strength", lerp(0.0, 0.2, amount))
 	_panel_container.modulate.a = amount
+	
+	if not Engine.is_editor_hint():
+		get_tree().paused = amount > 0.3
 
 func toggle() -> void:
 	_is_currently_opening = not _is_currently_opening

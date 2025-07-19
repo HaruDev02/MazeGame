@@ -16,13 +16,13 @@ signal hit_player
 
 var sprite_node_pos_tween: Tween
 
-func _ready() -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
-	_raycast_to_player.target_position = get_tree().get_nodes_in_group("Player")[0].global_position - global_position
-	print(_raycast_to_player.get_collider())
-	pass
+	area_entered.connect(
+		func(area: Area2D):
+			if area.is_in_group("Player"):
+				hit_player.emit()
+	)
 	
 func _move(dir: Vector2) -> void:
 	global_position += TILE_SIZE * dir

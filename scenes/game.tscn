@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cnl33cit3papx"]
+[gd_scene load_steps=15 format=4 uid="uid://cnl33cit3papx"]
 
 [ext_resource type="Texture2D" uid="uid://buj7ed4f6hf27" path="res://assets/art/Sprite-0001.png" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://dv1ulp3f4ys0k" path="res://scenes/game.gd" id="1_j5wjh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bgnmxti6htoyl" path="res://scenes/collectible.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://cb1ra0hp3cj63" path="res://scenes/enemy.tscn" id="6_ryrav"]
 [ext_resource type="PackedScene" uid="uid://dhi14v0urbtbe" path="res://scenes/pause_screen.tscn" id="9_vef74"]
+[ext_resource type="PackedScene" uid="uid://yvs12bu1sfbd" path="res://scenes/game_over_screen.tscn" id="10_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jktm"]
 texture = ExtResource("1_e2o6t")
@@ -27,12 +28,6 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_fc0e3")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_j5wjh"]
-scenes/1/scene = ExtResource("4_eow3j")
-
-[sub_resource type="TileSet" id="TileSet_vef74"]
-sources/0 = SubResource("TileSetScenesCollectionSource_j5wjh")
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_j5wjh")
 
@@ -47,31 +42,32 @@ tile_map_data = PackedByteArray("AAD8/wEAAAABAAEAAAD8/wAAAAABAAEAAAD8////AAABAAE
 tile_set = SubResource("TileSet_7jktm")
 script = ExtResource("2_fc0e3")
 
-[node name="ExitLayer" type="TileMapLayer" parent="."]
-unique_name_in_owner = true
-tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAQA=")
-tile_set = SubResource("TileSet_vef74")
-
-[node name="Player" parent="." instance=ExtResource("2_feb5d")]
-unique_name_in_owner = true
-position = Vector2(-40, -40)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Collectible" parent="." instance=ExtResource("5_7jktm")]
 position = Vector2(-24, 8)
 
 [node name="Collectible2" parent="." instance=ExtResource("5_7jktm")]
 position = Vector2(24, -40)
 
+[node name="Exit" parent="." instance=ExtResource("4_eow3j")]
+unique_name_in_owner = true
+position = Vector2(24, 24)
+
+[node name="Player" parent="." instance=ExtResource("2_feb5d")]
+unique_name_in_owner = true
+position = Vector2(-40, -40)
+
 [node name="Enemy" parent="." instance=ExtResource("6_ryrav")]
 unique_name_in_owner = true
 position = Vector2(8.33334, 24)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseScreen" parent="CanvasLayer" instance=ExtResource("9_vef74")]
-visible = false
+
+[node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("10_vtaks")]
+unique_name_in_owner = true
 
 [node name="StartTimer" type="Timer" parent="."]
 unique_name_in_owner = true

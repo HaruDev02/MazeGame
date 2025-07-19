@@ -12,6 +12,7 @@ texture_filter = 1
 script = ExtResource("2_24kvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_24kvk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

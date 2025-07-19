@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhi14v0urbtbe"]
+[gd_scene load_steps=5 format=3 uid="uid://yvs12bu1sfbd"]
 
-[ext_resource type="Shader" uid="uid://l3qtar4xi0b7" path="res://assets/shaders/blur.gdshader" id="1_gkx8r"]
-[ext_resource type="Theme" uid="uid://bufh7q0gwvnc3" path="res://assets/themes/menu_theme.tres" id="1_rk3l4"]
-[ext_resource type="Script" uid="uid://dvtj4dkf858on" path="res://scenes/pause_screen.gd" id="2_un6tb"]
+[ext_resource type="Theme" uid="uid://bufh7q0gwvnc3" path="res://assets/themes/menu_theme.tres" id="1_jw6e5"]
+[ext_resource type="Script" uid="uid://cxdlw2mp0j31a" path="res://scenes/game_over_screen.gd" id="2_jw6e5"]
+[ext_resource type="Shader" uid="uid://l3qtar4xi0b7" path="res://assets/shaders/blur.gdshader" id="3_cyfkl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rk3l4"]
-shader = ExtResource("1_gkx8r")
+shader = ExtResource("3_cyfkl")
 shader_parameter/blur_amount = 1.5
 shader_parameter/tint = Color(0, 0, 0, 1)
 shader_parameter/tint_strength = 0.2
 shader_parameter/saturation = 0.3
 
-[node name="PauseScreen" type="Control"]
+[node name="GameOverScreen" type="Control"]
 process_mode = 3
 texture_filter = 1
 layout_mode = 3
@@ -21,10 +21,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_rk3l4")
-script = ExtResource("2_un6tb")
-menu_opened_amount = 1.0
-animation_duration = 2.3
+theme = ExtResource("1_jw6e5")
+script = ExtResource("2_jw6e5")
 
 [node name="BlurColorRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -38,7 +36,6 @@ grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,10 +52,10 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
-texture_filter = 1
+[node name="GameOverText" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "PAUSE"
+text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,10 +66,11 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 2
-text = "Resume"
+text = "Restart"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true

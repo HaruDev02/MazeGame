@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bufh7q0gwvnc3"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bufh7q0gwvnc3"]
+
+[ext_resource type="FontFile" uid="uid://dud74feii5rsh" path="res://assets/ByteBounce.ttf" id="1_3jc4x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyb85"]
 content_margin_left = 10.0
@@ -45,10 +47,12 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
-Button/font_sizes/font_size = 24
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_3jc4x")
 Button/styles/focus = SubResource("StyleBoxFlat_wyb85")
 Button/styles/hover = SubResource("StyleBoxFlat_hx2t1")
 Button/styles/normal = SubResource("StyleBoxFlat_wyb85")
 Button/styles/pressed = SubResource("StyleBoxFlat_3jc4x")
-Label/font_sizes/font_size = 24
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_3jc4x")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_2krdf")
